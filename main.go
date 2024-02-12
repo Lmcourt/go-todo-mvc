@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+type Todos struct {
+	completed bool
+	item      string
+}
 
-func main() {
-	fmt.Println("Hello, world.")
+var list = []Todos{}
+
+func AddTodo(todo string) {
+	list = append(list, Todos{completed: false, item: todo})
 }
