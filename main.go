@@ -28,3 +28,17 @@ func UpdateTodo(list []Todos, todo string, newTodo string) {
 		}
 	}
 }
+
+func ToggleCompleted(list []Todos, todo string) {
+	for i, t := range list {
+		if t.item == todo {
+			list[i].completed = !list[i].completed
+		}
+	}
+}
+
+func ToggleAllCompleted(list []Todos) {
+	for i := range list {
+		list[i].completed = true
+	}
+}
