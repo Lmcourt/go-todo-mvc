@@ -20,3 +20,11 @@ func FindTodo(list []Todos, todo string) []Todos {
 	}
 	return item
 }
+
+func UpdateTodo(list []Todos, todo string, newTodo string) {
+	for i, t := range list {
+		if t.item == todo {
+			list[i].item = newTodo
+		}
+	}
+}

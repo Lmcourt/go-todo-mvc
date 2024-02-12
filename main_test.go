@@ -6,8 +6,8 @@ import (
 )
 
 func TestTodoList(t *testing.T) {
-	list = []Todos{{completed: true, item: "test"}}
 	t.Run("Adds a todo", func(t *testing.T) {
+		list = []Todos{{completed: true, item: "test"}}
 		AddTodo("do this")
 		got := list
 		want := []Todos{{completed: true, item: "test"}, {completed: false, item: "do this"}}
@@ -17,7 +17,8 @@ func TestTodoList(t *testing.T) {
 		}
 	})
 
-	t.Run("Finds an item", func(t *testing.T) {
+	t.Run("Finds a todo", func(t *testing.T) {
+		list = []Todos{{completed: true, item: "test"}}
 		FindTodo(list, "test")
 		got := FindTodo(list, "test")
 		want := []Todos{{completed: true, item: "test"}}
@@ -26,4 +27,17 @@ func TestTodoList(t *testing.T) {
 			t.Errorf("got %v want %v", got, want)
 		}
 	})
+
+	t.Run("updates a todo", func(t *testing.T) {
+		list = []Todos{{completed: true, item: "test"}}
+		updateTodo := "Updated test todo"
+		UpdateTodo(list, "test", updateTodo)
+
+		want := []Todos{{completed: true, item: "Updated test todo"}}
+
+		if !reflect.DeepEqual(list, want) {
+			t.Errorf("got %v want %v", list, want)
+		}
+	})
+
 }
