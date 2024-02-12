@@ -16,4 +16,14 @@ func TestTodoList(t *testing.T) {
 			t.Errorf("got %v want %v", got, want)
 		}
 	})
+
+	t.Run("Finds an item", func(t *testing.T) {
+		FindTodo(list, "test")
+		got := FindTodo(list, "test")
+		want := []Todos{{completed: true, item: "test"}}
+
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
 }

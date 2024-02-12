@@ -10,3 +10,13 @@ var list = []Todos{}
 func AddTodo(todo string) {
 	list = append(list, Todos{completed: false, item: todo})
 }
+
+func FindTodo(list []Todos, todo string) []Todos {
+	var item []Todos
+	for _, t := range list {
+		if t.item == todo {
+			item = []Todos{{completed: t.completed, item: t.item}}
+		}
+	}
+	return item
+}
